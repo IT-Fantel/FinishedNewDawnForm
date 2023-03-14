@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/south-street/jquery-ui.css" rel="stylesheet">
+<link href="css/jquery.signature.css" rel="stylesheet">
+<style>
+.kbw-signature { width: 450px; height: 45px; }
+</style>
+<!--[if IE]>
+<script src="excanvas.js"></script>
+<![endif]-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="js/jquery.signature.js"></script>
+<script>
+$(function() {
+	var sig = $('#sig').signature();
+	$('#disable').click(function() {
+		var disable = $(this).text() === 'Disable';
+		$(this).text(disable ? 'Enable' : 'Disable');
+		sig.signature(disable ? 'disable' : 'enable');
+	});
+	$('#clear').click(function() {
+		sig.signature('clear');
+	});
+	$('#json').click(function() {
+		alert(sig.signature('toJSON'));
+	});
+	$('#svg').click(function() {
+		alert(sig.signature('toSVG'));
+	});
+	var dtToday = new Date();
+	var month = dtToday.getMonth() + 1;     // getMonth() is zero-based
+	var day = dtToday.getDate();
+	var year = dtToday.getFullYear();
+	if(month < 10)
+	   month = '0' + month.toString();
+	if(day < 10)
+	   day = '0' + day.toString();
+
+	var maxDate = year + '-' + month + '-' + day;
+	$('#dateID').attr('max', maxDate);
+	$('#dateID1').attr('max', maxDate);
+});
+</script>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Customer Information Form</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+	<style type="text/css">
+			body {
+			font-size: 12px;
+			font-family: helvetica,arial,sans-serif;
+			margin: 0 auto;
+			padding: 0;
+
+		}
+		#ffieldset {
+			padding: 0 auto;
+			margin: 0 auto;
+		}
+		#sfieldset {
+			padding: 0 auto;
+			margin: 0 auto;
+		}
+		#sfieldset p {
+			margin: 0;
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+
+		button {
+			height: 10%;
+			margin: 0 auto;
+			padding: 12px;
+		}
+
+		p {
+			margin: 0;
+		}
+		div {
+			margin: 0;
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+		h1, h2, h3 {
+			font-size: 15px;
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+		.left {
+			float: left;
+			margin: 0 auto;
+			padding-top: 0;
+			padding-bottom: 0;
+
+		}
+		.right {
+			float: right;
+			margin: 0 auto;
+			padding-top: 0;
+			padding-bottom: 0;
+
+		}
+		.left1 {
+			position: relative;
+			float: left;
+			margin: 0 auto;
+			padding-top: 0;
+			padding-bottom: 0;
+
+
+		}
+		.right1 {
+			position: relative;
+			float: right;
+			margin: 0 auto;
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+	
+	</style>
+</head>
+<body>
+	
+<header style="text-align: center;">
+	<img src="mtnlogo1.jpg" style="margin: 0;">
+	<h1 style="margin:0;font-size: 15px;">Customer Information Form</h1>
+	<p style="margin:0;"><i>This form is subject to change</i></p>
+</header>
+<form action="form.php" method="post">
+	<fieldset id="ffieldset">
+		<legend>Reason:</legend>
+	<label>
+		<input type="radio" name="name" value="1">
+		SIM Registration
+		</label>
+	<label>
+		<input type="radio" name="name" value="2">
+		SIM Swap
+	</label>
+
+	<br>
+	<label>
+		Date:
+		<input id="dateID" name="date" type="date"/>
+	</label>
+
+	<label>
+		NIN:
+		<input name="nin" placeholder="NIN" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"type = "number"maxlength = "11" required/>
+		</label>
+
+	<br>
+	<label>
+		Surname:
+		<input type="text" name="surname" class="surname">
+	</label>
+
+	<label>
+		Firstname:
+		<input type="text" name="firstname">
+	</label>
+
+
+	
+	<label>
+		Email:
+		<input type="email" name="email">
+	</label>
+
+
+	<label>
+		Alternative No:
+		<input name="number" placeholder="altno" class="altno" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"type = "number" maxlength = "11" required/>
+
+	</label>
+
+	<br>
+	<label>
+		Nigerian:
+		<input type="radio" name="origin" value="1">
+	</label>
+	<label>
+		Foreigner:
+		<input type="radio" name="origin" value="2">
+	</label>
+</fieldset>
+
+
+<h2 style="margin:0">NIN Update Consent</h2>
+<p style="text-align:justify;margin: 0;">By providing your NIN for SIM Registration or SIM Swap, and signing this form, you are conseting to update our SIM Registration Records with your NIN details.</p>
+
+
+<fieldset id="sfieldset">
+	<legend>SIM Swap</legend>
+	<select name="type">
+		<p>SIM Type</p>
+		<option>Voice</option>
+		<option>Data</option>
+		<option>Corporate</option>
+	</select>
+	<select name="reason">
+		<p>Reason for Swap</p>
+		<option>SIM Upgrade</option>
+		<option>Damaged</option>
+		<option>Lost</option>
+		<option>Stolen</option>
+	</select>
+	<label>
+		Phone No. for Swap
+		<input name="tel" placeholder="phone number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"type = "number"maxlength = "11" required/>
+
+	</label>
+
+	<label>
+		Last Amount Recharged
+		<input type="text" name="amount">
+	</label>
+
+	<label>
+		Date of Recharge
+		<input id="dateID1" name="date2" type="date"/>
+	</label>
+
+	<label>
+		Data Bundle Purchased
+		<input type="text" name="dbundle">
+	</label>
+
+	<p>Write Three Numbers you Frequently Call</p>
+	<label>
+		Phone No. 1
+		<input name="phone1" placeholder="phone1" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"type = "number"maxlength = "11" required/>
+	</label>
+
+
+	<label>
+		Phone No. 2
+		<input name="phone2" placeholder="Phone2" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"type = "number"maxlength = "11" required/>
+	</label>
+
+	<label>
+		Phone No. 3
+		<input name="phone3" placeholder="Phone3" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"type = "number"maxlength = "11" required/>
+	</label>
+
+</fieldset>
+<div class="proxy">
+	<fieldset>
+		<legend>For Proxy</legend>
+		<label>
+		Proxy NIN
+		<input type="text" name="pnin" disabled>
+		</label>
+
+		<label>
+		Proxy Surname
+		<input type="text" name="psurname" disabled>
+		</label>
+
+		<label>
+		Proxy Firstname
+		<input type="text" name="pfirstname" disabled>
+		</label>
+	</fieldset>
+</div>
+
+<label>
+	Attended By:
+	<input type="text" name="staffname">
+</label>
+
+<label>
+	Shopname:
+	<input type="text" name="shopname">
+</label>
+</div>
+
+<h2 style="margin:0">Customer Attestation</h2>
+<p style="text-align:justify;margin: 0;">By signing this form, I confirm that (i) all information provided is hereby correct and valid (ii) I have read, understand, and agree to be bound by the terms of the Privacy Notice contained in www.mtnonline* MTN Nigeria is authorized to use my information in accordance with the laws of the Federal Republic of Nigeria. Visit www.mtnonline.com for appropriate Terms and Conditions.
+<br>
+<br>
+
+<div class="cf">
+	<div class="left1"></div>
+		
+	</div>
+		<button type="submit"  value="submit" name="submit">Submit</button>
+		<button onclick="window.print()">Print</button>
+	<button id="disable">Disable</button> 
+	<button id="clear">Clear</button> 
+	<div id="sig"></div>
+	
+</div>
+</div>
+
+
+</form>
+</body>
+</html>
